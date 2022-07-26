@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.waracle.cakemgr.controllers.CakeDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -32,7 +33,12 @@ public class CakeService {
      */
     private final CakeRepository repository;
 
-    public CakeService(@Value("${cakes.initialisation.url}") String initialisationUrl, CakeRepository repo) {
+    @Autowired
+    public CakeService(CakeRepository repo) {
+        this(CakeService.class.getClassLoader().getResource("init.json").toString(), repo);
+    }
+
+    public CakeService(String initialisationUrl, CakeRepository repo) {
         this.initialisationUrl = initialisationUrl;
         this.repository = repo;
     }

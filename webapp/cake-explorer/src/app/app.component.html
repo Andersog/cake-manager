@@ -1,0 +1,35 @@
+<span *ngIf="cakes">
+  <mat-toolbar class="toolbar" color="primary">
+    <mat-toolbar-row class="toolbar__main">
+      <a href="./">
+        <mat-icon class="toolbar__cake-icon" aria-label="Cake">cake</mat-icon>
+      </a>
+      <span class="toolbar__interior-span"></span>
+      <mat-icon
+        color="primary"
+        class="example-icon"
+        aria-hidden="false"
+        aria-label="Example user verified icon"
+        >verified_user</mat-icon
+      >
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="app-main__body">
+    <div class="app-main__interior">
+      <CakeList [cakes]="cakes"></CakeList>
+    </div>
+  </div>
+  <div class="app-main__add-button">
+    <button
+      (click)="openDialog()"
+      mat-fab
+      color="primary"
+      aria-label="Add new cake"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
+</span>

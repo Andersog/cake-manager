@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Bake a new cake!</h2>
+<mat-dialog-content class="add-cake__content">
+  <mat-form-field>
+    <mat-label>Cake Name</mat-label>
+    <input autocomplete="off" [(ngModel)]="nameInput" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cake Description</mat-label>
+    <input autocomplete="off" [(ngModel)]="descriptionInput" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Link to your cake</mat-label>
+    <input
+      autocomplete="off"
+      (focusout)="tryLoad($event)"
+      matInput
+      placeholder="https://your-cake.png"
+      [(ngModel)]="urlInput"
+    />
+  </mat-form-field>
+
+  <img class="add-cake__preview" src="{{ this.image }}" />
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+  (click)="saveCake()"
+    [disabled]="!nameInput || !descriptionInput || !urlInput"
+    mat-button
+    mat-dialog-close
+    cdkFocusInitial
+  >
+    Bake!
+  </button>
+</div>
