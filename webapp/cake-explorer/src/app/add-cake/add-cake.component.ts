@@ -11,11 +11,25 @@ export class AddCakeComponent {
   public descriptionInput?: string;
   public urlInput?: string;
   public image?: string;
+  public imageValid = false;
 
-  constructor(private dialogRef: MatDialogRef<AddCakeComponent>) {
+  constructor(private dialogRef: MatDialogRef<AddCakeComponent>) {}
+
+  /**
+   * Event handler for when the image loads.
+   *
+   * <p>
+   * The event handler is only called if the image loaded successfully.
+   * </p>
+   */
+  public onImageLoad(event: any) {
+    this.imageValid = true;
   }
 
-  public saveCake(){
+  /**
+   * Closes the dialog and passes back a success.
+   */
+  public saveCake() {
     this.dialogRef.close({
       cake: {
         name: this.nameInput,
@@ -25,7 +39,15 @@ export class AddCakeComponent {
     });
   }
 
-  public tryLoad(event: any) {
+  /**
+   * Attempts to load the provided image.
+   *
+   * @param event The call event.
+   */
+  public tryLoad(event: any): void {
+    if (this.image === this.urlInput) return;
+
     this.image = this.urlInput;
+    this.imageValid = false;
   }
 }

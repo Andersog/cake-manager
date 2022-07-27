@@ -38,6 +38,13 @@ public class Cake extends CakeDto implements Persistable<Integer> {
         this.id = id;
     }
 
+    /**
+     * Creates a new instance of a cake without an ID.
+     *
+     * @param name The name of the cake
+     * @param description The description of the cake.
+     * @param imageUrl The url of the cake.
+     */
     public Cake(String name, String description, URL imageUrl) {
         this(null, name, description, imageUrl);
     }

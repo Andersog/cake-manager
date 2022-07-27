@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.net.URL;
 
 /**
- * DTO for creating our cake.
+ * DTO for creating our cakes.
  */
 @AllArgsConstructor
 @NoArgsConstructor

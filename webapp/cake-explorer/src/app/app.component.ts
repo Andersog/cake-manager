@@ -15,14 +15,27 @@ export class AppComponent {
     this.cakeService.getCakes().subscribe((value) => (this.cakes = value));
   }
 
+  /**
+   * Adds a cake to the server and updates our current view.
+   *
+   * @param cakeToAdd The cake to add
+   */
   public addCake(cakeToAdd: CakeRequest): void {
-    this.cakeService
-      .createCake(cakeToAdd)
-      .subscribe((value) => {
-        this.cakes?.unshift(value)
+    this.cakeService.createCake(cakeToAdd).subscribe(
+      (value) => {
+        this.cakes?.unshift(value);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-      });
+      },
+      (error) => {
+        alert('An error occurred adding the cake');
+        console.log(error);
+      }
+    );
   }
+
+  /**
+   * Opens the add cake dialog.
+   */
   openDialog() {
     const dialogRef = this.dialog.open(AddCakeComponent);
 

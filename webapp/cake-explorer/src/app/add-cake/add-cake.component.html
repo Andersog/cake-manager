@@ -19,13 +19,17 @@
     />
   </mat-form-field>
 
-  <img class="add-cake__preview" src="{{ this.image }}" />
+  <img
+    class="add-cake__preview"
+    src="{{ this.image }}"
+    (load)="onImageLoad($event)"
+  />
 </mat-dialog-content>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
   <button
-  (click)="saveCake()"
-    [disabled]="!nameInput || !descriptionInput || !urlInput"
+    (click)="saveCake()"
+    [disabled]="!nameInput || !descriptionInput || !imageValid"
     mat-button
     mat-dialog-close
     cdkFocusInitial

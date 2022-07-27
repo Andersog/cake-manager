@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.waracle.cakemgr.controllers.CakeDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -95,6 +94,7 @@ public class CakeService {
         // Create our table
         this.repository.createTable().block();
 
+        // Provided initialisation code
         System.out.println("downloading cake json");
         try (InputStream inputStream = new URL(this.initialisationUrl).openStream()) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

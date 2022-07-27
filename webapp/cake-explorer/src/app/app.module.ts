@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [CakeService],
   bootstrap: [AppComponent],
