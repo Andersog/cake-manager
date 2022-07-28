@@ -2,6 +2,8 @@
 This project provides a webapp for reading and creating new cakes from a simple in memory database.
 It runs on Spring boot (webflux stack) and has an Angular front end.
 
+The run script currently packages the static content within the resources of the java project purely to avoid requiring a separate standalone web server for demo purposes.
+
 # Running the project
 To run this project, first install and setup any missing dependencies:
 - Your favourite 8+ JDK e.g. [Liberica](https://bell-sw.com/pages/downloads/#mn)
