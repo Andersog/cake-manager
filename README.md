@@ -15,3 +15,15 @@ To run this project, first install and setup any missing dependencies:
 
 *note that some of the example images are no longer available, so a resource file has been included: `init.json` where initialisation data can be added.
 
+# Logging in
+The app will let you view the cakes unauthenticated, but to add a new one you'll need to log in.
+
+The app uses OAuth2 with [Auth0](https://auth0.com/) to enable authentication.
+You can login with your google account, or there is also a local test user set up:
+
+`username: testuser@test.com`
+
+`password: A-Value-To-Login`
+
+* Note that the initial load of the keys by spring can be pretty slow
+* Subsequent adds should be quick

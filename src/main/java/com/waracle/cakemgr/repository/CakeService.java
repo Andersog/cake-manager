@@ -94,7 +94,7 @@ public class CakeService {
         // Create our table
         this.repository.createTable().block();
 
-        // Provided initialisation code
+        // Largely left this initialisation code untouched since it's just a demo seed
         System.out.println("downloading cake json");
         try (InputStream inputStream = new URL(this.initialisationUrl).openStream()) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

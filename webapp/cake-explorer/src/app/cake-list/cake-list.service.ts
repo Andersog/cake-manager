@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { catchError, flatMap, map, mergeMap, Observable, of } from 'rxjs';
 import {} from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '@auth0/auth0-angular';
 
 /**
  * A creation request.
@@ -26,14 +27,14 @@ const CAKE_URL = '/cakes';
 
 @Injectable()
 export class CakeService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, public auth: AuthService) {}
 
   /**
    * Gets our cakes from the endpoint.
    * @returns An observable of all cakes on the system.
    */
   public getCakes(): Observable<Cake[]> {
-    return this.httpClient.get<Cake[]>(CAKE_URL);
+    return this.httpClient.get<Cake[]>(CAKE_URL).pipe(catchError(() => []));
   }
 
   /**
@@ -41,7 +42,15 @@ export class CakeService {
    * @returns The cake creation request.
    */
   public createCake(requestedCake: CakeRequest): Observable<Cake> {
-    console.log(requestedCake);
-    return this.httpClient.post<Cake>(CAKE_URL, requestedCake);
+    return this.auth.getAccessTokenSilently().pipe(
+      mergeMap((token) => {
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Bearer ' + token);
+
+        return this.httpClient.post<Cake>(CAKE_URL, requestedCake, {
+          headers: headers,
+        });
+      })
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AuthModule } from '@auth0/auth0-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,11 +15,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { AddCakeComponent } from './add-cake/add-cake.component';
 import { FormsModule } from '@angular/forms';
+import { AuthButtonComponent } from './auth/auth-button.component';
 
 @NgModule({
-  declarations: [AppComponent, CakeListComponent, AddCakeComponent],
+  declarations: [
+    AppComponent,
+    CakeListComponent,
+    AddCakeComponent,
+    AuthButtonComponent,
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -33,8 +41,16 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatProgressSpinnerModule,
+
+    AuthModule.forRoot({
+      domain: 'ganderson-personal.eu.auth0.com',
+      clientId: 'GU6Be2k770PldP8MIzNSZltn4KOKAjS8',
+    }),
   ],
-  providers: [CakeService],
+  providers: [
+    CakeService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

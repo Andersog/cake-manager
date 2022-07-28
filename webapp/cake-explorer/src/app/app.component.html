@@ -12,6 +12,7 @@
         aria-label="Example user verified icon"
         >verified_user</mat-icon
       >
+      <AuthButton class="toolbar__login-area"></AuthButton>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -20,16 +21,25 @@
       <CakeList [cakes]="cakes"></CakeList>
     </div>
   </div>
-  <div class="app-main__add-button">
-    <button
-      (click)="openDialog()"
-      mat-fab
-      color="primary"
-      aria-label="Add new cake"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+  <ng-container *ngIf="auth.isAuthenticated$ | async">
+    <div class="app-main__add-button">
+      <ng-container *ngIf="!addingCake">
+        <button
+          *ngIf="!addingCake"
+          (click)="openDialog()"
+          mat-fab
+          color="primary"
+          aria-label="Add new cake"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="addingCake">
+        <mat-spinner [diameter]="60"></mat-spinner>
+      </ng-container>
+    </div>
+  </ng-container>
 
   <router-outlet></router-outlet>
 </span>
