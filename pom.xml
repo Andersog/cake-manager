@@ -12,6 +12,7 @@
 
     <groupId>com.waracle</groupId>
     <artifactId>cake-manager</artifactId>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>cake-manager Maven Webapp</name>
 
@@ -121,6 +122,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.5.RELEASE</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
