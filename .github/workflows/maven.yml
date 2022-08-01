@@ -19,7 +19,7 @@ jobs:
     
     - run: npm install
       working-directory: webapp/cake-explorer
-    - run: ng build
+    - run: npm run build
       working-directory: webapp/cake-explorer
     
     - name: Set up JDK 11
