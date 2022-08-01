@@ -34,5 +34,5 @@ jobs:
     - name: Upload atrifact
       uses: actions/upload-artifact@v3
       with:
-        name: webcrawler.jar
+        name: cake-manager
         path: target/*.jar
