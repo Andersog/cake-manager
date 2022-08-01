@@ -10,7 +10,17 @@ To run this project, first install and setup any missing dependencies:
 - [Maven](https://maven.apache.org/install.html)
 - [Node.js](https://nodejs.org/en/download/)
 - Angular CLI: `npm install -g @angular/cli`
-- Checkout the and navigate to the source directory and run `run.bat` from a console
+- Checkout the and navigate to the source directory
+
+- Running with the .bat script
+  - run `run.bat` from a console
+
+- Running directly
+  - run `npm install` in webapp/cake-explorer
+  - run `ng build` in webapp/cake-explorer
+  - run `mvn package` in the top directory where your pom is stored
+  - run `java -jar cake-manager-1.0-SNAPSHOT.jar` in the /target directory
+
 - The cake UI should now be running on `localhost:4200`
 - The cakes API is running on `localhost:8080` with swagger available at `http://localhost:8080/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/`
 
